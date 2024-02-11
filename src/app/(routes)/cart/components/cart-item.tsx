@@ -38,9 +38,9 @@ const CartItem: React.FC<CartItemProps> = ({
         </div>
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div className="flex justify-between">
-            {/* Dodat brend + link na brend */}
+            {/* TODO Dodat brend + link na brend */}
             <p className=" text-lg font-semibold text-black">
-              {data.name} {/* Dodat link na proizvod */}
+              {data.name} {/* TODO Dodat link na proizvod */}
             </p>
           </div>
 

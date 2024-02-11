@@ -8,7 +8,7 @@ export const revalidate = 0;
 
 const HomePage = async () => {
   const products = await getProducts({ isFeatured: true });
-  const heroes = await getHeroes("294202f2-9933-403c-827f-1b772b70fb75");
+  const heroes = await getHeroes("294202f2-9933-403c-827f-1b772b70fb75"); // TODO - napravit main hero za pocetnu
 
   return (
     <Container>

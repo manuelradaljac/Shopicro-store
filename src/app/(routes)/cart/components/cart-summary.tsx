@@ -10,6 +10,7 @@ const CartSummary = () => {
   const searchParams = useSearchParams();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
+  const cart = useCart();
 
   useEffect(() => {
     if (searchParams.get("success")) {
@@ -30,7 +31,7 @@ const CartSummary = () => {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       {
-        productIds: items.map((item) => item.id),
+        productId: items.map((item) => item.id),
       }
     );
 
@@ -42,6 +43,14 @@ const CartSummary = () => {
       <h2 className="text-lg font-medium text-gray-900">
         Informacije o narudžbi
       </h2>
+      <div className="pt-2">
+        {cart.items.map((item) => (
+          <div className="flex flex-row justify-between" key={item.id}>
+            <p>{item.name}</p>
+            <Currency value={item.price} />
+          </div>
+        ))}
+      </div>
       <div className="mt-6 space-y-4">
         <div className="flex items-center justify-between border-t border-gray-200 pt-4">
           <div className="text-base font-medium text-gray-900">Ukupno</div>

@@ -1,30 +1,53 @@
-import { ShoppingCart } from "lucide-react";
+"use client";
+
+import { Check, ShoppingCart, X } from "lucide-react";
 import { Product } from "../../types";
 import Button from "./ui/button";
 import Currency from "./ui/currency";
+import useCart from "../../hooks/use-cart";
 
 interface ProductInfoProps {
   data: Product;
 }
-// TODO Napravit da se moze dodavat favicon svoj, svoj tab name tj. da to bude store name by default ali prilagodljivo u settingsima i da se moze svoj logo dodavat
 // TODO Napravit da ide vise velicina i da ima selector za velicine
-// TODO MOZDA - dodat currency selector usd, eur, bam , rsd ...
 
 const ProductInfo: React.FC<ProductInfoProps> = ({ data }) => {
+  const cart = useCart();
+
+  const onAddToCart = () => {
+    cart.addItem(data);
+  };
+
   return (
     <div className="">
       <div className="flex flex-col gap-y-2">
-        <h2 className="text-2xl font-semibold hover:underline text-gray-900 cursor-pointer">Gymbeam</h2>
         <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
       </div>
       <div className="mt-3 flex items-end justify-between">
-        <p className="text-2xl text-gray-900">
+        <div className="text-2xl text-gray-900">
           <Currency value={data.price} />
-        </p>
+        </div>
       </div>
       <hr className="my-4" />
       <div className="flex flex-col gap-y-6 text-xl">
         <div className="flex items-center gap-x-4">
+          <h3 className="font-semibold text-black">Dostupnost:</h3>
+          <div className="flex flex-row items-center justify-evenly">
+            {data?.Inventory?.map((item) => (
+              <div key={item.id}>{item.isInStock ? <Check /> : <X />}</div>
+            ))}
+            {data?.Inventory?.map((item) => (
+              <h2 key={item.id}>
+                {parseInt(item.numberInStock) < 10 ? (
+                  `Preostalo samo: ${item.numberInStock}`
+                ) : (
+                  <></>
+                )}
+              </h2>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-row items-center gap-x-4">
           <h3 className="font-semibold text-black">Veličina:</h3>
           <div className="">{data?.size?.value}</div>
         </div>
@@ -40,7 +63,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ data }) => {
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
-        <Button className="flex items-center gap-x-5">
+        <Button onClick={onAddToCart} className="flex items-center gap-x-5">
           Dodaj u košaricu
           <ShoppingCart />
         </Button>
