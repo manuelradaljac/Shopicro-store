@@ -5,6 +5,7 @@ import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "../../../../../hooks/use-cart";
 import { toast } from "sonner";
+import { Separator } from "@/components/ui/separator";
 
 const CartSummary = () => {
   const searchParams = useSearchParams();
@@ -40,9 +41,10 @@ const CartSummary = () => {
 
   return (
     <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
-      <h2 className="text-lg font-medium text-gray-900">
+      <h2 className="text-xl font-semibold text-gray-900 mb-2">
         Informacije o narudžbi
       </h2>
+      <Separator />
       <div className="pt-2">
         {cart.items.map((item) => (
           <div className="flex flex-row justify-between" key={item.id}>

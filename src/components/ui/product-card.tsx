@@ -33,7 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
 
   const handleClick = () => {
     // TODO DODAT SLUG ZBOG RUZNIH ID-eva - koristit slug library - npm
-    router.push(`/product/${data?.id}`);
+    router.push(`/product/${data?.slug}`);
   };
   return (
     <div
