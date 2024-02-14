@@ -17,7 +17,7 @@ const Navbar = async () => {
       <Container>
         <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center">
           <Link href="/" className="ml-3 flex lg:ml-0 gap-x-2">
-            <Image src={storeInfo.logo} alt="shopicro" width={100} height={100} priority/>
+            <Image src={storeInfo?.logo} alt="shopicro" width={100} height={100} priority/>
           </Link>
           <MainNavigation data={categories}/>
           <NavbarActions />
