@@ -5,6 +5,8 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import ModalProvider from "../../providers/modal-provider";
 import ToastProvider from "../../providers/toast-provider";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -26,6 +28,8 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Analytics />
+        <SpeedInsights/>
       </body>
     </html>
   );
