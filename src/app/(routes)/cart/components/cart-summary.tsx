@@ -32,7 +32,7 @@ const CartSummary = () => {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       {
-        productId: items.map((item) => item.id),
+        productIds: items.map((item) => item.id),
       }
     );
 
