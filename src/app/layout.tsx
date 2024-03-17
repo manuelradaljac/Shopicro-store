@@ -5,7 +5,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import ModalProvider from "../../providers/modal-provider";
 import ToastProvider from "../../providers/toast-provider";
-import Head from "next/head";
+import Script from "next/script";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -21,10 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <script defer src="https://umami-production-e3f9.up.railway.app/script.js" data-website-id="b935325a-3edb-4916-9ebe-9752a5c4fe3c"></script>
-      </Head>
       <body className={font.className}>
+      <Script defer src="https://umami-production-e3f9.up.railway.app/script.js" data-website-id="b935325a-3edb-4916-9ebe-9752a5c4fe3c"/>
         <ToastProvider />
         <ModalProvider />
         <Navbar />
